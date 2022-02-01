@@ -183,7 +183,7 @@ You can verify this worked by:
 
 You should see a basic react page with a logo and a link at `localhost:3000`. When you have verified that this is the case, kill the app.
 
-Next, we'll want to install some dependencies with `npm install --save-dev ethers web3 web3-react`.
+Next, we'll want to install some dependencies with `npm install --save-dev --legacy-peer-deps ethers web3 web3-react`.
 
 Once you have done that, create a file named `.env` and put the following into it:
 
