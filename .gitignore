@@ -1,0 +1,10 @@
+.vscode/**
+
+node_modules/**
+
+# Blockchain
+blockchain/node_modules/**
+
+# App
+app/.env
+app/node_modules/**
