@@ -332,7 +332,7 @@ This function is a way for react to listen to events from the ethereum connector
 
 Create a `misc.ts` file in the `utils` folder. Its contents should be:
 
-```
+```TSX
 import { Web3Provider } from '@ethersproject/providers'
 
 export function getLibrary(provider: any): Web3Provider {
@@ -371,7 +371,6 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals()
-
 ```
 
 ## App.tsx
@@ -410,12 +409,11 @@ const WalletApp = () => {
   )
 }
 export default WalletApp
-
 ```
 
 Inside the `WalletApp`, define some variables that we'll use throughout the app:
 
-```
+```TSX
 const [contract, setContract] = useState(undefined as Greeter|undefined)
 const { chainId, account, activate, deactivate, active, library } = useWeb3React<Web3Provider>()
 ```
