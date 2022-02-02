@@ -23,7 +23,7 @@ Next, we'll want to install all the necessary dependencies that hardhat requires
 
 When that has been installed, create a `tsconfig.json` file. This is a fie that tells typescript how to compile your code. The file should contain the following:
 
-```
+```TSX
 {
     "compilerOptions": {
         "target": "es5",
@@ -41,7 +41,7 @@ When that has been installed, create a `tsconfig.json` file. This is a fie that 
 
 rename `hardhat.config.js` to `hardhat.config.ts`. This is because we're using typescript. You can do this with `mv hardhat.config.js hardhat.config.ts`. Next, the file should contain the following:
 
-```
+```TSX
 import { HardhatUserConfig } from "hardhat/types";
 import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
@@ -63,7 +63,7 @@ This file does a few things. First, it declares the solidity version that our lo
 
 We'll also need to create a deployment script for our smart contract. To do that, create a file `scripts\deploy.ts`, and place the following contents into it:
 
-```
+```TSX
 import { ethers } from "hardhat"
 
 async function main() {
@@ -88,7 +88,7 @@ This instantiates the greeter contract using the ethers contract factory. Then, 
 
 The basic hardhat project also comes with a sample smart contract. We'll be using this smart contract in our example. You should see this contract in `contracts\Greeter.sol`. It should look something like this:
 
-```
+```Solidity
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
@@ -125,7 +125,7 @@ What we've created here is a node, that we can run locally. To deploy the node, 
 
 In another terminal window, navigate to the same `blockchain` directory and run `npx hardhat run --network localhost scripts\deploy.ts`. This deploys the smart contract to the running node. You should it compile the smart contracts, and have a message like:
 
-```
+```Shell
 Greeter Contract Address =  0x5FbDB2315678afecb367f032d93F642f64180aa3
 Greeter Txn Hash =  0xf0566602dbdc7293fa95a29ca0d3d37ba604763969825b661f2c49bb270edbb6
 Deployed By =  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
@@ -135,7 +135,7 @@ You should record the greeter contract address for later use.
 
 In the other terminal window, where the node is running, you should see a message like this:
 
-```
+```Shell
   Contract deployment: Greeter
   Contract address:    0x5fbdb2315678afecb367f032d93f642f64180aa3
   Transaction:         0xf0566602dbdc7293fa95a29ca0d3d37ba604763969825b661f2c49bb270edbb6
@@ -164,7 +164,7 @@ Once that is done, you can switch to that network in metamask. Let's add one of 
 
 In the node terminal, you should see several accounts displayed. Let's grab one of those:
 
-```
+```Shell
 Account #0: 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 (10000 ETH)
 Private Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 ```
@@ -195,7 +195,7 @@ At the other end of that equal sign, put in the greeter contract address you rec
 
 Then, navigate back to the `blockchain` directory and copy over the artifacts that were compiled by hardhat:
 
-```
+```Shell
 cd ../blockchain
 cp -r typechain-types ../app/src
 cp -r artifacts ../app/src
@@ -210,7 +210,7 @@ We'll need a few boilerplate items to work with web3 and metamask. Create a `uti
 
 Create a `connectors.ts` file in the `utils` folder. Its contents should be:
 
-```
+```TSX
 /**
 * A file including wallet connectors from Web3-React
 */
@@ -236,7 +236,7 @@ You can think of a connector as the thing connecting you to a certain wallet. In
 
 Create a `hooks.ts` file in the `utils` folder. Its contents should be:
 
-```
+```TSX
 import { useState, useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { injected } from './connectors'
@@ -348,7 +348,7 @@ This function lets us export the web3 provider. This provider is going to used i
 
 Navigate to `index.tsx` and make sure that `<App />` is surrounded with `<Web3ReactProvider getLibrary={getLibrary}></Web3ReactProvider>`. Nothing else should change. The end result should look like this:
 
-```
+```TSX
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Web3ReactProvider } from '@web3-react/core'
@@ -380,7 +380,7 @@ Now, we are ready to code up our app to interact with the blockchain.
 
 Let's import everything we need.
 
-```
+```TSX
 import { useEffect, useState } from 'react'
 import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
@@ -397,13 +397,13 @@ Finally, we're also importing the generated types from our smart contract. With 
 
 Next, we want to load the address of our smart contract from our environment configuration.
 
-```
+```TSX
 const contractAddress = process.env.REACT_APP_SMART_CONTRACT_ADDRESS
 ```
 
 Let's define our app:
 
-```
+```TSX
 const WalletApp = () => {
   return (
     <div></div>
@@ -426,14 +426,14 @@ const { chainId, account, activate, deactivate, active, library } = useWeb3React
 
 In order to automatically connect to metamask, we can use the following code:
 
-```
+```TSX
 const triedEager = useEagerConnect()
 useInactiveListener(!triedEager)
 ```
 
 On initial load, the `contract` is going to be undefined. To initialize it, we need to make use of react's `useEffect()` hook.
 
-```
+```TSX
 useEffect(() => {
   if (!contractAddress) {
     throw new Error('Must set contract address as env var')
@@ -451,7 +451,7 @@ The useEffect hook runs on every re-render. You can provide it with a set of var
 
 Looking at the `return` call, let's put something into that div to render it.
 
-```
+```TSX
 <div>
   <div>ChainId: {chainId}</div>
   <div>Account: {account}</div>
@@ -487,7 +487,7 @@ Since we do not have these functions yet, let's define them
 
 `_connectToMetamask` will call the activate method from `useWeb3React`
 
-```
+```TSX
 const _connectToMetamask = () => {
   activate(injected)
 }
@@ -495,7 +495,7 @@ const _connectToMetamask = () => {
 
 To get greeting, we will call the smart contract with the type we have initialized:
 
-```
+```TSX
 const _getGreeting = async () => {
   if (active && !!contract) {
     try {
@@ -514,7 +514,7 @@ If you have an autocomplete feature, notice how you can view all functions on th
 
 Similarly, let's create two functions to set the greeting on the contract:
 
-```
+```TSX
 const _setHelloGreeting = async () => {
   if (active && !!contract) {
     try {
@@ -544,7 +544,7 @@ const _setGoodbyeGreeting = async () => {
 
 When all of this is done, your file should look a lot like this:
 
-```
+```TSX
 import { useEffect, useState } from 'react'
 import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
