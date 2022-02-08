@@ -174,11 +174,12 @@ Go to metamask --> accounts --> import account. Select private key in the dropdo
 # Web App
 To interact with our newly deployed blockchain locally, we will create a sample web3 react project. We will be using typescript here as well.
 
-To start, make sure that you are back in the root directory (above the `blockchain` directory). To create the project, run `npx create-react-app my-app --template typescript`. If you're using `yarn`, you can run `yarn create react-app my-app --template typescript`
+To start, make sure that you are back in the root directory (above the `blockchain` directory). To create the project, run `npx create-react-app app --template typescript`. If you're using `yarn`, you can run `yarn create react-app app --template typescript`
 
 You can verify this worked by:
 
 `cd app`
+
 `npm start` or `yarn start` (again, we will be using npm in this tutorial)
 
 You should see a basic react page with a logo and a link at `localhost:3000`. When you have verified that this is the case, kill the app.
