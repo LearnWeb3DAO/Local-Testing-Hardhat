@@ -1,6 +1,6 @@
 # Local Blockchain Tutorial
 
-This tutorial should familiarize you with using a local blockchain using Hardhat, deploying a sample smart contract to the local blockchain, and interacting with that blockchain with metamask and Remix.
+This tutorial should familiarize you with starting a local blockchain using Hardhat, deploying a sample smart contract to the local blockchain and interacting with that blockchain with Metamask and Remix.
 
 ---
 
@@ -72,11 +72,10 @@ contract Greeter {
 
 ```
 
-This contract declares a string for storage, `greeting`. There are also two methods and a constructor. The constructor acts like any other language, instantiating the greeting with a provided string value. We will see this in action later.
-
-The `greet` method returns the greeting string. Since this is a `view` function, it costs no gas, and requires no signing to execute.
-The `setGreeting` method sets the greeting string with a provided user value. Since this updates the smart contract state, it costs gas, and requires signing.
-**One intresting thing to note about the `setGreeting` method is that it uses the hardhat's console.log contract, so we can actually debug and see to what value was `greeting` changed to!**
+- This contract declares a string - `greeting`. There are also two methods and a constructor. The constructor initiates the greeting variable with the provided string value. 
+- The `greet` method returns the greeting string. Since this is a `view` function, it costs no gas, and requires no signing to execute.
+- The `setGreeting` method sets the greeting string with a provided user value. Since this updates the smart contract state, it costs gas, and requires signing.
+**One intresting thing to note about the `setGreeting` method is that it uses the hardhat's console.log contract, so we can actually debug and see to what values was `greeting` changed to!**
 
 **Isnt this just mind blowing 🤯 🤯 🤯**
 
@@ -86,7 +85,7 @@ Now to actually start running your local blockchain in your terminal pointing to
 npx hardhat node
 ```
 
-(Keep this terminal running)
+**(Keep this terminal running)**
 
 This command starts a local blockchain node for you.
 You should be able to see some accounts which have already been funded by hardhat with 10000 ETH
@@ -96,7 +95,7 @@ Now lets add this node and this account to MetaMask.
 
 ## Metamask Connection
 
-- To use metamask to connect to this network, click on your profile and click on settings
+- To use metamask to connect to this network, click on your profile and then click on settings
   ![](https://i.imgur.com/rZi6Ofi.png)
 
 - Then click on Networks, followed by `Localhost 8545`
@@ -107,7 +106,7 @@ Now lets add this node and this account to MetaMask.
 - Change the Chain ID to `31337`(this is the chainId for the local blockchain you are running) and then click `Save`
   ![](https://i.imgur.com/Dt6py3h.png)
 
-- Awesome now your MetaMask has a connection to your local blockchain, we should now add the accounts that hardhat gave to us
+- Awesome now your MetaMask has a connection to your local blockchain, we will now add the accounts that Hardhat gave to us
 - In the node terminal, you should see several accounts displayed. Let's grab one of those:
 
   ```Shell
@@ -115,13 +114,13 @@ Now lets add this node and this account to MetaMask.
   Private Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
   ```
 
-Go to metamask --> click on your profile --> import account. Select private key in the dropdown and paste the private key from the account you wish.You should now see an account with 10000 ETH
+Go to metamask --> click on your profile --> import account. Select private key in the dropdown and paste the private key from the account you wish. You should now see an account with 10000 ETH
 
 ## Remix
 
 We will now deploy our contract to local blockchain and interact with it using Remix
 
-Go to [remix.ethereum.org](<[remix.ethereum.org](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js)>) and a new file inside the contracts folder named `Greeter.sol`
+Go to [remix.ethereum.org](<[remix.ethereum.org](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js)>) and create a new file inside the contracts folder named `Greeter.sol`
 
 - Copy this code into it:
 
@@ -157,19 +156,21 @@ This is the same code, we explained above
   ![](https://i.imgur.com/bhAwIRf.png)
 
 - Now to deploy, go to deployment tab and in your environment select `Injected Web3`, make sure that the account connected is the one that you imported above and the network is `Localhost 8545` on your MetaMask
+- 
   ![](https://i.imgur.com/zgGKlQm.png)
   ![](https://i.imgur.com/qrJTtLi.png)
 
 - Set a greeting and click on deploy
 
-- Now you have deployed the contract
+- Your contract is now deployed 🎉
 
 - Set a greeting and click on `setGreeting`
+
   ![](https://i.imgur.com/Rkc6tOH.png)
 
-- Now check your terminal which was running your hardhat node, it should have the console.log
+- Check your terminal which was running your hardhat node, it should have the console.log
 
-![](https://i.imgur.com/zgD7fo7.png)
+    ![](https://i.imgur.com/zgD7fo7.png)
 
 Lets gooo!!! You learnt how to do print statements in a contract 🚀 🚀 🚀
 
