@@ -179,5 +179,3 @@ Lets gooo!!! You learnt how to do print statements in a contract 🚀 🚀 🚀
 ## Contributors
 
 **This module was built in collaboration with [Hypotenuse Labs](https://hypotenuse.ca/)**
-
-![](https://i.imgur.com/Ewwk3Iz.png)
