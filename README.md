@@ -120,7 +120,7 @@ Go to metamask --> click on your profile --> import account. Select private key 
 
 We will now deploy our contract to local blockchain and interact with it using Remix
 
-Go to [remix.ethereum.org](<[remix.ethereum.org](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js)>) and create a new file inside the contracts folder named `Greeter.sol`
+Go to [remix.ethereum.org](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js) and create a new file inside the contracts folder named `Greeter.sol`
 
 - Copy this code into it:
 
@@ -170,7 +170,8 @@ This is the same code, we explained above
 
 - Check your terminal which was running your hardhat node, it should have the console.log
 
-    ![](https://i.imgur.com/zgD7fo7.png)
+    ![local-node-console-](https://user-images.githubusercontent.com/56781761/156940719-d41dbe65-9dde-40b5-83c4-6641c0fa9737.png)
+
 
 Lets gooo!!! You learnt how to do print statements in a contract 🚀 🚀 🚀
 
