@@ -1,4 +1,4 @@
-# Local Blockchain Tutorial
+# Local Blockchain Testing
 
 This tutorial should familiarize you with starting a local blockchain using Hardhat, deploying a sample smart contract to the local blockchain and interacting with that blockchain with Metamask and Remix.
 
@@ -10,7 +10,7 @@ This tutorial should familiarize you with starting a local blockchain using Hard
 - Its only your machine which is running the blockchain and thus consensus is fast and you dont have to wait for other nodes to sync or validate.
 - You can also use many specialized modules specially built for local testing like [Hardhat console.log](https://hardhat.org/tutorial/debugging-with-hardhat-network.html) which helps you to add printing inside your contract.
 
----
+<Quiz questionId="008be2da-50d1-4267-928c-ff8b10eabd09" />
 
 ## Build
 
@@ -75,9 +75,9 @@ contract Greeter {
 - This contract declares a string - `greeting`. There are also two methods and a constructor. The constructor initiates the greeting variable with the provided string value. 
 - The `greet` method returns the greeting string. Since this is a `view` function, it costs no gas, and requires no signing to execute.
 - The `setGreeting` method sets the greeting string with a provided user value. Since this updates the smart contract state, it costs gas, and requires signing.
-**One intresting thing to note about the `setGreeting` method is that it uses the hardhat's console.log contract, so we can actually debug and see to what values was `greeting` changed to!**
+**One interesting thing to note about the `setGreeting` method is that it uses the Hardhat's console.log contract, so we can actually debug and see to what values was `greeting` changed to!**
 
-**Isnt this just mind blowing 🤯 🤯 🤯**
+<Quiz questionId="d7a6c9a2-2aca-47de-b5a9-805aafd04831" />
 
 Now to actually start running your local blockchain in your terminal pointing to your directory execute this command:
 
@@ -87,11 +87,15 @@ npx hardhat node
 
 **(Keep this terminal running)**
 
-This command starts a local blockchain node for you.
-You should be able to see some accounts which have already been funded by hardhat with 10000 ETH
+This command starts a local blockchain node for you. You should be able to see some accounts which have already been funded by hardhat with 10000 ETH
+
+<Quiz questionId="c0ab069f-1e0c-4d13-bc12-d20792529539" />
+
 ![](https://i.imgur.com/NkwsCXn.png)
 
-Now lets add this node and this account to MetaMask.
+Now, you can continue by deploying the contract to the local blockchain using Hardhat, by running `npx hardhat run scripts/sample-script.js`. 
+
+Alternatively, you can also use something like Remix and have it deploy contracts to your local blockchain. The second method will also involve setting up Metamask to work with your local blockchain, and will give you an idea of how to locally test your React/Next.js apps using contracts running on the local blockchain as well, so let's do that.
 
 ## Metamask Connection
 
@@ -115,6 +119,8 @@ Now lets add this node and this account to MetaMask.
   ```
 
 Go to metamask --> click on your profile --> import account. Select private key in the dropdown and paste the private key from the account you wish. You should now see an account with 10000 ETH
+
+<Quiz questionId="c28d2f88-b2c9-4e8b-b6ab-ac8400ede5ae" />
 
 ## Remix
 
@@ -172,11 +178,15 @@ This is the same code, we explained above
 
     ![local-node-console-](https://user-images.githubusercontent.com/56781761/156940719-d41dbe65-9dde-40b5-83c4-6641c0fa9737.png)
 
-
-Lets gooo!!! You learnt how to do print statements in a contract 🚀 🚀 🚀
+<Quiz questionId="662f7e38-0490-4417-8ce0-0689fa7e3bb6" />
 
 ---
 
 ## Contributors
 
 **This module was built in collaboration with [Hypotenuse Labs](https://hypotenuse.ca/)**
+
+<Quiz questionId="a1cbd14b-3243-4be4-a5be-a6d9c6d95b09" />
+<Quiz questionId="7f93386d-1b8e-470e-8517-1d13c683ecd7" />
+
+<SubmitQuiz />
