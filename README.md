@@ -19,6 +19,8 @@ To build the smart contract we would be using [Hardhat](https://hardhat.org/). H
 - To setup a Hardhat project, Open up a terminal and execute these commands
 
   ```bash
+  mkdir Local-Blockchain-Testing
+  cd Local-Blockchain-Testing
   npm init --yes
   npm install --save-dev hardhat
   ```
@@ -32,19 +34,19 @@ To build the smart contract we would be using [Hardhat](https://hardhat.org/). H
   - Select `Create a JavaScript project`
   - Press enter for the already specified `Hardhat Project root`
   - Press enter for the question on if you want to add a `.gitignore`
-  - Press enter for `Do you want to install this sample project's dependencies with npm (@nomiclabs/hardhat-toolbox)?`
+  - Press enter for `Do you want to install this sample project's dependencies with npm (@nomicfoundation/hardhat-toolbox)?`
 
 Now you have a hardhat project ready to go!
 
 If you are not on mac, please do this extra step and install these libraries as well :)
 
 ```bash
-npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers
+npm install --save-dev @nomicfoundation/hardhat-toolbox
 ```
 
 and press `enter` for all the questions.
 
-The basic hardhat project also comes with a sample smart contract. We'll be using this smart contract in our example. You should see this contract in `contracts\Greeter.sol`. It should look something like this:
+In the contracts folder, create a new solidity file called Greeter.sol. Now we would write some code in the file.
 
 ```Solidity
 //SPDX-License-Identifier: Unlicense
@@ -93,7 +95,36 @@ This command starts a local blockchain node for you. You should be able to see s
 
 ![](https://i.imgur.com/NkwsCXn.png)
 
-Now, you can continue by deploying the contract to the local blockchain using Hardhat, by running `npx hardhat run scripts/sample-script.js`.
+Now, you can continue by deploying the contract to the local blockchain using Hardhat. To do so, update the code inside `scripts/deploy.js` with the code below.
+
+```js
+// We require the Hardhat Runtime Environment explicitly here. This is optional
+// but useful for running the script in a standalone fashion through `node <script>`.
+//
+// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
+// will compile your contracts, add the Hardhat Runtime Environment's members to the
+// global scope, and execute the script.
+const hre = require("hardhat");
+
+async function main() {
+  // We get the contract to deploy
+  const Greeter = await hre.ethers.getContractFactory("Greeter");
+  const greeter = await Greeter.deploy("Hello, Hardhat!");
+
+  await greeter.deployed();
+
+  console.log("Greeter deployed to:", greeter.address);
+}
+
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+```
+
+Deploy to local blockchain by running `npx hardhat run scripts/deploy.js`.
 
 Alternatively, you can also use something like Remix and have it deploy contracts to your local blockchain. The second method will also involve setting up Metamask to work with your local blockchain, and will give you an idea of how to locally test your React/Next.js apps using contracts running on the local blockchain as well, so let's do that.
 
