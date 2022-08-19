@@ -29,22 +29,22 @@ To build the smart contract we would be using [Hardhat](https://hardhat.org/). H
   npx hardhat
   ```
 
-  - Select `Create a basic sample project`
+  - Select `Create a JavaScript project`
   - Press enter for the already specified `Hardhat Project root`
   - Press enter for the question on if you want to add a `.gitignore`
-  - Press enter for `Do you want to install this sample project's dependencies with npm (@nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers)?`
+  - Press enter for `Do you want to install this sample project's dependencies with npm @nomicfoundation/hardhat-toolbox?`
 
 Now you have a hardhat project ready to go!
 
 If you are not on mac, please do this extra step and install these libraries as well :)
 
 ```bash
-npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers
+npm install --save-dev @nomicfoundation/hardhat-toolbox
 ```
 
 and press `enter` for all the questions.
 
-The basic hardhat project also comes with a sample smart contract. We'll be using this smart contract in our example. You should see this contract in `contracts\Greeter.sol`. It should look something like this:
+The following code is a simple smart contract. We'll be using this smart contract in our example.
 
 ```Solidity
 //SPDX-License-Identifier: Unlicense
@@ -161,7 +161,7 @@ This is the same code, we explained above
 - Compile `Greeter.sol`
   ![](https://i.imgur.com/bhAwIRf.png)
 
-- Now to deploy, go to deployment tab and in your environment select `Injected Web3`, make sure that the account connected is the one that you imported above and the network is `Localhost 8545` on your MetaMask
+- Now to deploy, go to deployment tab and in your environment select `Injected Provider - Metamask`, make sure that the account connected is the one that you imported above and the network is `Localhost 8545` on your MetaMask
 - 
   ![](https://i.imgur.com/zgGKlQm.png)
   ![](https://i.imgur.com/qrJTtLi.png)
