@@ -75,7 +75,7 @@ contract Greeter {
 - This contract declares a string - `greeting`. There are also two methods and a constructor. The constructor initiates the greeting variable with the provided string value. 
 - The `greet` method returns the greeting string. Since this is a `view` function, it costs no gas, and requires no signing to execute.
 - The `setGreeting` method sets the greeting string with a provided user value. Since this updates the smart contract state, it costs gas, and requires signing.
-**One interesting thing to note about the `setGreeting` method is that it uses the Hardhat's console.log contract, so we can actually debug and see to what values was `greeting` changed to!**
+**One interesting thing to note about the `setGreeting` method is that it uses the Hardhat's console.sol contract, so we can actually debug and see to what values was `greeting` changed to!**
 
 <Quiz questionId="d7a6c9a2-2aca-47de-b5a9-805aafd04831" />
 
